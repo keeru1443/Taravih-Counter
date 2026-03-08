@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0f0d" />
+    <meta name="description" content="Taraweeh Counter 🌙 - A modern mobile-first Ramadan prayer tracker." />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Taraweeh Counter 🌙</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header card">
+        <div>
+          <p class="eyebrow">Ramadan Companion</p>
+          <h1>Taraweeh Counter <span aria-hidden="true">🌙</span></h1>
+        </div>
+        <label class="mode-toggle" for="modeSwitch">
+          <span>Taraweeh</span>
+          <input id="modeSwitch" type="checkbox" aria-label="Toggle Dhikr mode" />
+          <span class="slider" aria-hidden="true"></span>
+          <span>Dhikr</span>
+        </label>
+      </header>
+
+      <section id="taraweehMode" class="mode-panel">
+        <div class="stats-grid card">
+          <div>
+            <p class="stat-label">Rakats</p>
+            <p id="rakatsCount" class="stat-value">0</p>
+          </div>
+          <div>
+            <p class="stat-label">Sets</p>
+            <p id="setsCount" class="stat-value">0</p>
+          </div>
+          <div>
+            <p class="stat-label">Time Elapsed</p>
+            <p id="elapsedTime" class="stat-value timer">00:00:00</p>
+          </div>
+        </div>
+
+        <section class="progress-card card" aria-label="Taraweeh progress">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 120 120" class="progress-ring" role="img" aria-label="Progress to 20 rakats">
+              <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+              <circle id="ringProgress" class="ring-progress" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <p id="progressText" class="progress-text">0 / 20</p>
+          </div>
+          <div class="ramadan-progress">
+            <div class="ramadan-meta">
+              <p id="ramadanNight">Ramadan Night: 1 / 30</p>
+              <p id="ramadanPct">0%</p>
+            </div>
+            <div class="bar-track"><div id="ramadanBar" class="bar-fill"></div></div>
+          </div>
+          <p id="completionMessage" class="completion" aria-live="polite"></p>
+        </section>
+
+        <button id="tapCounter" class="tap-btn ripple" aria-label="Add 2 rakats">
+          Tap to Add +2
+        </button>
+
+        <div class="actions">
+          <button id="undoBtn" class="action-btn ripple">Undo -2</button>
+          <button id="resetBtn" class="action-btn danger ripple">Reset</button>
+        </div>
+
+        <section class="history card">
+          <h2>Prayer History</h2>
+          <ul id="historyList"></ul>
+        </section>
+      </section>
+
+      <section id="dhikrMode" class="mode-panel hidden" aria-label="Dhikr counters">
+        <div class="card dhikr-card">
+          <h2>Dhikr Mode</h2>
+          <p class="small">Tap each dhikr to increment its own counter.</p>
+          <div class="dhikr-list">
+            <button class="dhikr-btn ripple" data-key="subhanAllah">SubhanAllah <span id="subhanAllahCount">0</span></button>
+            <button class="dhikr-btn ripple" data-key="alhamdulillah">Alhamdulillah <span id="alhamdulillahCount">0</span></button>
+            <button class="dhikr-btn ripple" data-key="allahuAkbar">Allahu Akbar <span id="allahuAkbarCount">0</span></button>
+          </div>
+          <button id="resetDhikr" class="action-btn danger ripple">Reset Dhikr</button>
+        </div>
+      </section>
+
+      <nav class="bottom-nav card" aria-label="Bottom navigation">
+        <button class="nav-btn active">Counter</button>
+        <button class="nav-btn" id="installBtn" hidden>Install App</button>
+      </nav>
+    </main>
+
+    <dialog id="resetDialog" class="reset-dialog">
+      <form method="dialog">
+        <p>Reset current Taraweeh session?</p>
+        <menu>
+          <button value="cancel">Cancel</button>
+          <button value="confirm" class="danger">Reset</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
