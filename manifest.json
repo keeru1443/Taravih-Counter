@@ -1,0 +1,17 @@
+{
+  "name": "Taraweeh Counter 🌙",
+  "short_name": "Taraweeh",
+  "description": "Mobile-first Taraweeh and Dhikr tracker for Ramadan.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#050706",
+  "theme_color": "#0b0f0d",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
